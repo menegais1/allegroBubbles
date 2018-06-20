@@ -1,9 +1,25 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 
+#include "tela.h"
+#include "hexa.h"
 
-int main(){
+
+
+
+void render(){
+    
+
+
 
 
 
 }
+
+int main(){
+
+    render();
+
+}
+
