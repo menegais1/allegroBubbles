@@ -36,14 +36,17 @@
 			<Add option="-Wall" />
 			<Add directory="../allegro-5.0.10-mingw-4.7.0/allegro-5.0.10-mingw-4.7.0/include" />
 		</Compiler>
-		<Unit filename="../hexa/exemplo1.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../hexa/exemplo2.c">
+		<Unit filename="bola.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="bola.h" />
+		<Unit filename="canhao.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="canhao.h" />
+		<Unit filename="controle.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="controle.h" />
 		<Unit filename="helpers.h" />
 		<Unit filename="hexa.c">

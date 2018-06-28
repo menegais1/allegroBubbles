@@ -11,7 +11,7 @@
 // tempo entre telas (em segundos)
 // depende da iteração entre o SO e o allegro e suas configurações.
 // pode ser que isto não funcione.
-#define PERIODO (1/30.0)
+#define PERIODO (1/60.0)
 
 // fila para receber os eventos do teclado
 ALLEGRO_EVENT_QUEUE *tela_eventos_teclado;

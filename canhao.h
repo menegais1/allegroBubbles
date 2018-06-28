@@ -2,6 +2,7 @@
 
 #include "hexa.h"
 #include "bola.h"
+#include "hexagono.h"
 #include "helpers.h"
 
 #ifndef canhao_h
@@ -20,7 +21,7 @@ typedef struct
 void disparaCanhao(direcao _direcao);
 
 //Inicializa o canhao com a bolinha atual e a proxima bolinha
-void inicializaCanhao();
+void inicializaCanhao(canhao *_canhao, hexagono *_hexagono);
 
 //Atualiza o estado do canhao e checa o estado da bolinha atual
 void atualizaCanhao();

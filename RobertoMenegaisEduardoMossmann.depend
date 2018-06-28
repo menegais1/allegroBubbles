@@ -531,3 +531,61 @@
 
 1529426723 c:\users\t-gamer\desktop\hexa\hexa.h
 
+1529116787 source:c:\users\dell\desktop\allegrobubbles\hexa.c
+	"hexa.h"
+	<math.h>
+
+1529116786 c:\users\dell\desktop\allegrobubbles\hexa.h
+
+1529703621 source:c:\users\dell\desktop\allegrobubbles\tela.c
+	"tela.h"
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+
+1529116787 c:\users\dell\desktop\allegrobubbles\tela.h
+	<stdbool.h>
+
+1530156615 source:c:\users\dell\desktop\allegrobubbles\canhao.c
+	"helpers.h"
+	"canhao.h"
+	"tela.h"
+
+1530169865 source:c:\users\dell\desktop\allegrobubbles\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tela.h"
+	"hexa.h"
+
+1529706687 source:c:\users\dell\desktop\allegrobubbles\controle.c
+
+1530151829 source:c:\users\dell\desktop\allegrobubbles\bola.c
+	"bola.h"
+	"hexa.h"
+	"helpers.h"
+
+1530153487 c:\users\dell\desktop\allegrobubbles\bola.h
+	"hexa.h"
+	"helpers.h"
+
+1530153408 c:\users\dell\desktop\allegrobubbles\helpers.h
+
+1530155786 c:\users\dell\desktop\allegrobubbles\canhao.h
+	"hexa.h"
+	"bola.h"
+	"hexagono.h"
+	"helpers.h"
+
+1529699290 c:\users\dell\desktop\allegrobubbles\hexagono.h
+	"hexa.h"
+	"helpers.h"
+	"bola.h"
+
+1530144452 c:\users\dell\desktop\allegrobubbles\controle.h
+	"hexa.h"
+	"helpers.h"
+	"bola.h"
+	"hexagono.h"
+

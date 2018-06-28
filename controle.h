@@ -10,8 +10,10 @@
 
 typedef struct
 {
-    faseAtual;
-    
+    int faseAtual;
+    int recorde;
+    int pontuacao;
+
 } controle;
 
 

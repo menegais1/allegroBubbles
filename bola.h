@@ -12,7 +12,7 @@ typedef struct
     float velocidade;
     direcao _direcao;
     ponto _posicao;
-    int tamanho;
+    int raio;
     int _estado;
 } bola;
 
@@ -20,7 +20,7 @@ typedef struct
 void moveBolinha(float velocidade, direcao _direcao);
 
 //Gera a bolinha com base no array de cores existentes no hexagono e inicializa alguns valores
-void geraBolinha(corBolinhas[] _corBolinhas, float velocidade, int tamanho);
+void geraBolinha(corBolinhas _corBolinhas[], float velocidade, int tamanho);
 
 //Modifica o estado atual da bolinha com base no enum estado
 void estadoBolinha(int _estado);
