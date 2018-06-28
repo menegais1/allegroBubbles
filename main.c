@@ -19,10 +19,15 @@
 #define X_CANHAO LARGURA_TELA / 2
 #define Y_CANHAO 100
 
-#define RAIO_BOLA 18
+#define RAIO_BOLA 15
+#define BOLA_COLISAO_RAIO RAIO_BOLA * 0.75f
 #define VELOCIDADE_BOLA 10.0f
 #define RAIO_BOLA_SEGUINTE RAIO_BOLA * 0.75f
 #define DESLOCAMENTO_BOLA_SEGUINTE 1.15f
+
+#define NUM_MAX_COLISOES 6
+
+#define TAMANHO_SETA 30
 
 
 typedef struct {
@@ -68,6 +73,7 @@ typedef struct {
 
 typedef struct {
     int faseAtual;
+    char helpAberto;
 } Controle;
 
 
@@ -78,6 +84,7 @@ typedef struct {
     int cor;
     int raio;
     EstadoBolaEnum estado;
+    int numColisoes;
 } Bola;
 
 typedef struct {
@@ -85,6 +92,7 @@ typedef struct {
     Bola bolaAtual;
     Bola bolaSeguinte;
     char disparado;
+    int errosAtuais;
 } Canhao;
 
 
@@ -108,7 +116,7 @@ const Parede paredeDireita = {
 
 void desenhaLayout();
 
-void desenhaJogo(Canhao *canhao);
+void desenhaJogo(Canhao *canhao, Hexagono *hexagono);
 
 int CliqueDoMouse(int x, int y);
 
@@ -182,8 +190,49 @@ void desenhaLayout() {
                paredeDireita.pontoFinal.y, 0, preto);
 }
 
+void desenhaHelp() {
+    tela_retangulo(90, 120, 610, 520, 0, 0, azul);
+    tela_texto(350, 140, 30, preto, "Como jogar:");
+    tela_texto(130, 170, 15, verde, "O jogador deve eliminar todas as bolinhas da tela para");
+    tela_texto(130, 170, 15, verde, "eliminar todas as");
+    tela_texto(130, 170, 15, verde, "bolinhas da tela para");
+    tela_texto_dir(130, 185, 15, preto, "passar de fase.");
+    tela_texto_dir(130, 200, 15, preto, "Faça o maximo de pontuação possivel destruindo as bolinhas!");
+    tela_texto_dir(130, 215, 15, preto, "Para pontuar é muito simples, basta ");
 
-void desenhaJogo(Canhao *canhao) {
+}
+
+void desenhaSeta(Canhao *canhao) {
+
+    float xSeta, ySeta;
+
+    xSeta = tela_rato_x() - X_CANHAO;
+    ySeta = tela_rato_y() - Y_CANHAO;
+
+    //ySeta = ySeta / (xSeta + ySeta);
+
+    tela_linha(X_CANHAO, Y_CANHAO + 20, xSeta, ySeta * TAMANHO_SETA, 5, vermelho);
+
+
+}
+
+void atualizaCanhao(Canhao *canhao, Hexagono *hexagono) {
+
+    Coordenadas posicaoBolaSeguinte = {X_CANHAO, Y_CANHAO - (RAIO_BOLA * 2 * DESLOCAMENTO_BOLA_SEGUINTE)};
+
+    canhao->bolaAtual = canhao->bolaSeguinte;
+
+    canhao->bolaAtual.raio = RAIO_BOLA;
+    canhao->bolaAtual.posicao.x = X_CANHAO;
+    canhao->bolaAtual.posicao.y = Y_CANHAO;
+
+    canhao->bolaSeguinte = geraBola(posicaoBolaSeguinte, RAIO_BOLA_SEGUINTE, VELOCIDADE_BOLA, hexagono->corBolinhas);
+
+    canhao->bolaSeguinte.estado = GERADA;
+
+}
+
+void desenhaJogo(Canhao *canhao, Hexagono *hexagono) {
 
     Bola bolaAtual = canhao->bolaAtual;
     Bola bolaSeguinte = canhao->bolaSeguinte;
@@ -220,13 +269,26 @@ int CliqueDoMouse(int x, int y) {
 }
 
 
-void renderiza(Hexagono *hexagono, Canhao *canhao) {
+void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
     int xClique, yClique, clique = 0;
 
     while (1) {
         tela_inicia_desenho();
         desenhaLayout();
-        desenhaJogo(canhao);
+        desenhaJogo(canhao, hexagono);
+
+        if (canhao->bolaAtual.numColisoes > NUM_MAX_COLISOES) {
+            canhao->bolaAtual.estado = DESTRUIDA;
+            canhao->disparado = 0;
+            atualizaCanhao(canhao, hexagono);
+        }
+
+        if (controle->helpAberto == 1) {
+            desenhaHelp();
+        }
+
+
+        desenhaSeta(canhao);
 
         if (tela_rato_clicado() == 1) {
             xClique = tela_rato_x_clique();
@@ -235,20 +297,30 @@ void renderiza(Hexagono *hexagono, Canhao *canhao) {
 
             canhao->direcao.x = xClique - X_CANHAO;
             canhao->direcao.y = yClique - Y_CANHAO;
-            switch (clique) {
-                case SAIR:
-                    return;
-                    break;
-                case HELP:
-                    break;
-                case CANHAO:
-                    if (canhao->disparado == 0)
-                        disparaCanhao(canhao);
-                    break;
-                default:
-                    printf("CLIQUE INVALIDO");
-                    break;
+
+            if (controle->helpAberto == 1) {
+                controle->helpAberto = 0;
+            } else {
+                switch (clique) {
+                    case SAIR:
+                        return;
+                        break;
+                    case HELP:
+                        controle->helpAberto = 1;
+                        break;
+                    case CANHAO:
+                        if (canhao->disparado == 0)
+                            disparaCanhao(canhao);
+                        break;
+                    default:
+                        printf("CLIQUE INVALIDO");
+                        break;
+
+
+                }
             }
+
+
         }
 
 
@@ -291,6 +363,7 @@ Bola geraBola(Coordenadas posicao, int raio, float velocidade, CorBolinhas corBo
         bola.direcao.x = 0;
         bola.direcao.y = 0;
         bola.posicao = posicao;
+        bola.numColisoes = 0;
     }
 
     return bola;
@@ -298,6 +371,7 @@ Bola geraBola(Coordenadas posicao, int raio, float velocidade, CorBolinhas corBo
 
 void inicializaCanhao(Canhao *canhao, Hexagono *hexagono) {
 
+    canhao->errosAtuais = 0;
     canhao->disparado = 0;
     canhao->direcao.x = 0;
     canhao->direcao.y = 0;
@@ -309,7 +383,7 @@ void inicializaCanhao(Canhao *canhao, Hexagono *hexagono) {
         canhao->bolaSeguinte = geraBola(posicaoBolaSeguinte, RAIO_BOLA_SEGUINTE, VELOCIDADE_BOLA,
                                         hexagono->corBolinhas);
 
-    } while (canhao->bolaAtual.estado != GERADA && canhao->bolaSeguinte.estado != GERADA);
+    } while (canhao->bolaAtual.estado != GERADA || canhao->bolaSeguinte.estado != GERADA);
 
 }
 
@@ -335,13 +409,13 @@ void disparaCanhao(Canhao *canhao) {
 int colideBola(Coordenadas posicao, Bola *bola) {
 
     int colisao = NENHUMA;
-    if (posicao.x - bola->raio < paredeEsquerda.pontoInicial.x) {
+    if (posicao.x - BOLA_COLISAO_RAIO < paredeEsquerda.pontoInicial.x) {
         colisao = ESQUERDA;
-    } else if (posicao.x + bola->raio > paredeDireita.pontoInicial.x) {
+    } else if (posicao.x + BOLA_COLISAO_RAIO > paredeDireita.pontoInicial.x) {
         colisao = DIREITA;
-    } else if (posicao.y + bola->raio > paredeBaixo.pontoInicial.y) {
+    } else if (posicao.y + BOLA_COLISAO_RAIO > paredeBaixo.pontoInicial.y) {
         colisao = BAIXO;
-    } else if (posicao.y - bola->raio < paredeCima.pontoInicial.y && bola->direcao.y < 0) {
+    } else if (posicao.y - BOLA_COLISAO_RAIO < paredeCima.pontoInicial.y && bola->direcao.y < 0) {
         colisao = CIMA;
     }
     return colisao;
@@ -354,16 +428,22 @@ void moveBola(Bola *bola) {
     posicao.y = bola->posicao.y + bola->direcao.y * bola->velocidade;
     switch (colideBola(posicao, bola)) {
         case DIREITA:
+            bola->numColisoes++;
             bola->direcao.x *= -1;
             break;
         case ESQUERDA:
+            bola->numColisoes++;
             bola->direcao.x *= -1;
             break;
         case CIMA:
+            bola->numColisoes++;
             bola->direcao.y *= -1;
             break;
         case BAIXO:
+            bola->numColisoes++;
             bola->direcao.y *= -1;
+            break;
+        case NENHUMA:
             break;
         default:
             break;
@@ -388,7 +468,7 @@ int main() {
     inicializaCanhao(&canhao, &hexagono);
     tela_inicio(LARGURA_TELA, ALTURA_TELA, "BubbleSpinner");
 
-    renderiza(&hexagono, &canhao);
+    atualiza(&controle, &hexagono, &canhao);
 
 }
 
