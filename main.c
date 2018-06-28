@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <time.h>
 
 
 #include "tela.h"
@@ -9,9 +11,6 @@
 #ifndef helpers_h
 #define helpers_h
 
-#define CANHAO 1
-#define HELP 2
-#define SAIR 3
 
 #define LARGURA_TELA 680
 #define ALTURA_TELA 650
@@ -66,6 +65,13 @@ typedef enum {
     CIMA, BAIXO, DIREITA, ESQUERDA, NENHUMA
 } DirecaoColisaoEnum;
 
+typedef enum {
+    CANHAO,
+    HELP,
+    SAIR,
+    NENHUM
+} CliqueMouseEnum;
+
 typedef struct {
     CorBolinhas corBolinhas[6];
 } Hexagono;
@@ -73,6 +79,7 @@ typedef struct {
 
 typedef struct {
     int faseAtual;
+    int pontuacao;
     char helpAberto;
 } Controle;
 
@@ -144,7 +151,8 @@ float absInt(int number) {
     return number < 0 ? number * -1 : number;
 }
 
-void desenhaLayout() {
+void desenhaLayout(Controle *controle) {
+    char pontosTexto[10];
 
     //fundo branco
     tela_retangulo(0, 0, LARGURA_TELA, ALTURA_TELA, 0, 0, branco);
@@ -160,12 +168,16 @@ void desenhaLayout() {
     tela_circulo(LARGURA_TELA / 2, 100, 60, 0, 0, branco);
 
     //Pontua��o
-    tela_retangulo(80, 40, 250, 80, 2, preto, verde);
-    tela_texto_dir(90, 50, 20, preto, "Pontuacao:");
+    tela_retangulo(30, 40, 250, 80, 2, preto, verde);
+    tela_texto_esq(145, 50, 20, preto, "Pontuacao:");
+
+    sprintf(pontosTexto, "%d", controle->pontuacao);
+
+    tela_texto(190,61,18,preto, pontosTexto);
 
     //Fase
     tela_retangulo(430, 40, 530, 80, 2, preto, verde);
-    tela_texto_dir(440, 50, 20, preto, "Fase:");
+    tela_texto_dir(435, 50, 20, preto, "Fase:");
 
     //help
     tela_retangulo(550, 40, 630, 80, 2, preto, verde);
@@ -184,6 +196,7 @@ void desenhaLayout() {
     tela_linha(paredeBaixo.pontoInicial.x, paredeBaixo.pontoInicial.y, paredeBaixo.pontoFinal.x,
                paredeBaixo.pontoFinal.y,
                0, preto);
+
     tela_linha(paredeEsquerda.pontoInicial.x, paredeEsquerda.pontoInicial.y, paredeEsquerda.pontoFinal.x,
                paredeEsquerda.pontoFinal.y, 0, preto);
     tela_linha(paredeDireita.pontoInicial.x, paredeDireita.pontoInicial.y, paredeDireita.pontoFinal.x,
@@ -193,28 +206,33 @@ void desenhaLayout() {
 void desenhaHelp() {
     tela_retangulo(90, 120, 610, 520, 0, 0, azul);
     tela_texto(350, 140, 30, preto, "Como jogar:");
-    tela_texto(130, 170, 15, verde, "O jogador deve eliminar todas as bolinhas da tela para");
-    tela_texto(130, 170, 15, verde, "eliminar todas as");
-    tela_texto(130, 170, 15, verde, "bolinhas da tela para");
-    tela_texto_dir(130, 185, 15, preto, "passar de fase.");
-    tela_texto_dir(130, 200, 15, preto, "Faça o maximo de pontuação possivel destruindo as bolinhas!");
-    tela_texto_dir(130, 215, 15, preto, "Para pontuar é muito simples, basta ");
+
+    tela_texto_dir(130, 170, 15, branco, "Faça o maximo de pontuação possivel destruindo as bolas!");
+    tela_texto_dir(130, 185, 15, branco, "Para pontuar é muito simples, combinar três bolas ou mais");
+    tela_texto_dir(130, 200, 15, branco, "da mesma cor ao disparar o canhão. O jogador recebe uma  ");
+    tela_texto_dir(130, 215, 15, branco, "igual a quantidade de bolas destruidas ao disparar. Para");
+    tela_texto_dir(130, 230, 15, branco, "disparar é ainda mais simples, basta posicionar o cursor");
+    tela_texto_dir(130, 245, 15, branco, "na direção que deseja disparar.");
+    tela_texto_dir(130, 275, 15, branco, "O jogador deve tomar cuidado, pois conforme faz jogadas ");
+    tela_texto_dir(130, 290, 15, branco, "que nao resultam em destruição de bolas, irão ser adicio-");
+    tela_texto_dir(130, 305, 15, branco, "nadas novas bolinhas ao conjunto. Caso a bola seja destrui-");
+    tela_texto_dir(130, 320, 15, branco, "da sem acertar o conjunto, o jogador perde 3 pontos.");
+
+    tela_texto_dir(130, 350, 15, branco, "Se alguma bolinha do conjunto encostar em uma das pare-");
+    tela_texto_dir(130, 365, 15, branco, "des o jogador perde.");
+
+
+    tela_texto_dir(130, 380, 15, branco, "O jogador deve eliminar todas as bolas da tela para passar");
+    tela_texto_dir(130, 395, 15, branco, "de fase. A cada fase completada, o jogador recebe 10 ve-");
+    tela_texto_dir(130, 410, 15, branco, "zes o numero da fase que completou.");
+    tela_texto_dir(130, 425, 15, branco, "Sempre que o jogador avançar uma fase, a das proximas ");
+    tela_texto_dir(130, 440, 15, branco, "fases serão cada vez maiores");
+    tela_texto(350,500,10,branco,"Clique na tela para voltar ao jogo");
+
+
 
 }
 
-void desenhaSeta(Canhao *canhao) {
-
-    float xSeta, ySeta;
-
-    xSeta = tela_rato_x() - X_CANHAO;
-    ySeta = tela_rato_y() - Y_CANHAO;
-
-    //ySeta = ySeta / (xSeta + ySeta);
-
-    tela_linha(X_CANHAO, Y_CANHAO + 20, xSeta, ySeta * TAMANHO_SETA, 5, vermelho);
-
-
-}
 
 void atualizaCanhao(Canhao *canhao, Hexagono *hexagono) {
 
@@ -226,9 +244,10 @@ void atualizaCanhao(Canhao *canhao, Hexagono *hexagono) {
     canhao->bolaAtual.posicao.x = X_CANHAO;
     canhao->bolaAtual.posicao.y = Y_CANHAO;
 
-    canhao->bolaSeguinte = geraBola(posicaoBolaSeguinte, RAIO_BOLA_SEGUINTE, VELOCIDADE_BOLA, hexagono->corBolinhas);
-
-    canhao->bolaSeguinte.estado = GERADA;
+    do {
+        canhao->bolaSeguinte = geraBola(posicaoBolaSeguinte, RAIO_BOLA_SEGUINTE, VELOCIDADE_BOLA,
+                                        hexagono->corBolinhas);
+    } while (canhao->bolaSeguinte.estado != GERADA);
 
 }
 
@@ -237,14 +256,9 @@ void desenhaJogo(Canhao *canhao, Hexagono *hexagono) {
     Bola bolaAtual = canhao->bolaAtual;
     Bola bolaSeguinte = canhao->bolaSeguinte;
 
-    if (canhao->disparado) {
-        if (canhao->bolaAtual.estado == DISPARADA) {
-            moveBola(&canhao->bolaAtual);
-            tela_circulo(bolaAtual.posicao.x, bolaAtual.posicao.y, bolaAtual.raio, 1, preto, bolaAtual.cor);
-        }
-    } else {
-        tela_circulo(bolaAtual.posicao.x, bolaAtual.posicao.y, bolaAtual.raio, 1, preto, bolaAtual.cor);
-    }
+
+    tela_circulo(bolaAtual.posicao.x, bolaAtual.posicao.y, bolaAtual.raio, 1, preto, bolaAtual.cor);
+
 
     tela_circulo(bolaSeguinte.posicao.x, bolaSeguinte.posicao.y, bolaSeguinte.raio, 1, preto, bolaSeguinte.cor);
 
@@ -253,7 +267,7 @@ void desenhaJogo(Canhao *canhao, Hexagono *hexagono) {
 
 //ARRUMAR OS DEFINES
 int CliqueDoMouse(int x, int y) {
-    int LugarDoClique = 0;
+    int LugarDoClique = NENHUM;
 
     if (y >= 5 && y <= 25 && x >= 625 && x <= 675) {
         LugarDoClique = SAIR;
@@ -261,8 +275,6 @@ int CliqueDoMouse(int x, int y) {
         LugarDoClique = HELP;
     } else if (y > 100) {
         LugarDoClique = CANHAO;
-    } else {
-        LugarDoClique = 0;
     }
 
     return LugarDoClique;
@@ -270,25 +282,23 @@ int CliqueDoMouse(int x, int y) {
 
 
 void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
-    int xClique, yClique, clique = 0;
+    int xClique, yClique, clique;
 
     while (1) {
-        tela_inicia_desenho();
-        desenhaLayout();
-        desenhaJogo(canhao, hexagono);
 
-        if (canhao->bolaAtual.numColisoes > NUM_MAX_COLISOES) {
+
+        if (canhao->disparado) {
+            if (canhao->bolaAtual.estado == DISPARADA) {
+                moveBola(&canhao->bolaAtual);
+            }
+        }
+
+        if (canhao->bolaAtual.numColisoes >= NUM_MAX_COLISOES) {
             canhao->bolaAtual.estado = DESTRUIDA;
             canhao->disparado = 0;
             atualizaCanhao(canhao, hexagono);
         }
 
-        if (controle->helpAberto == 1) {
-            desenhaHelp();
-        }
-
-
-        desenhaSeta(canhao);
 
         if (tela_rato_clicado() == 1) {
             xClique = tela_rato_x_clique();
@@ -320,14 +330,25 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
                 }
             }
 
-
         }
 
-
-        tela_termina_desenho();
+        //Desenha na tela
+        desenha(canhao, hexagono, controle);
     }
 
 }
+
+void desenha(Canhao *canhao, Hexagono *hexagono, Controle *controle) {
+
+    tela_inicia_desenho();
+
+    desenhaLayout(controle);
+    desenhaJogo(canhao, hexagono);
+    if (controle->helpAberto == 1)
+        desenhaHelp();
+    tela_termina_desenho();
+}
+
 
 void inicializaCoresBolinhas(Hexagono *hexagono) {
 
@@ -460,9 +481,12 @@ void moveBola(Bola *bola) {
 int main() {
     srand(time(NULL));
 
+
     Controle controle;
     Hexagono hexagono;
     Canhao canhao;
+
+    controle.pontuacao=10231278;
 
     inicializaHexagono(&hexagono);
     inicializaCanhao(&canhao, &hexagono);
