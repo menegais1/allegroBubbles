@@ -6,29 +6,20 @@
 #ifndef bola_h
 #define bola_h
 
-typedef struct
-{
-    int cor;
+typedef struct {
     float velocidade;
-    direcao _direcao;
-    ponto _posicao;
+    Vetor direcao;
+    Coordenadas posicao;
+    int cor;
     int raio;
-    int _estado;
-} bola;
+    EstadoBolaEnum estado;
+    int numColisoes;
+} Bola;
 
-//Modifica a posicao da bolinha se baseando na direcao e velocidade
-void moveBolinha(float velocidade, direcao _direcao);
+Bola geraBola(Coordenadas posicao, int raio, float velocidade, CorBolinhas corBolinhas[]);
 
-//Gera a bolinha com base no array de cores existentes no hexagono e inicializa alguns valores
-void geraBolinha(corBolinhas _corBolinhas[], float velocidade, int tamanho);
+void moveBola(Bola *bola);
 
-//Modifica o estado atual da bolinha com base no enum estado
-void estadoBolinha(int _estado);
-
-//altera a direcao da bolinha com base na colis�o com a parede
-void ricocheteiaBolinha();
-
-//Checa a colisao da bolinha usando a velocidade e posicao atual e retorna o valor da colisao
-void colisaoBolinha();
+int colideBola(Coordenadas posicao, Bola *bola);
 
 #endif // bola

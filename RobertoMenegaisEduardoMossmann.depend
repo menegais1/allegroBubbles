@@ -548,44 +548,84 @@
 1529116787 c:\users\dell\desktop\allegrobubbles\tela.h
 	<stdbool.h>
 
-1530156615 source:c:\users\dell\desktop\allegrobubbles\canhao.c
+1530250926 source:c:\users\dell\desktop\allegrobubbles\canhao.c
 	"helpers.h"
 	"canhao.h"
+	"hexagono.h"
+	"bola.h"
 	"tela.h"
 
-1530220770 source:c:\users\dell\desktop\allegrobubbles\main.c
+1530253050 source:c:\users\dell\desktop\allegrobubbles\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	"tela.h"
+	"hexa.h"
+	"controle.h"
+	"hexagono.h"
+	"bola.h"
+	"canhao.h"
+	"helpers.h"
+	"desenha.h"
+
+1530251698 source:c:\users\dell\desktop\allegrobubbles\controle.c
+	<stdio.h>
+	"tela.h"
+	"hexagono.h"
+	"controle.h"
+	"desenha.h"
+	"canhao.h"
+	"bola.h"
+	"helpers.h"
+
+1530251866 source:c:\users\dell\desktop\allegrobubbles\bola.c
+	"bola.h"
+	"helpers.h"
+	<stdlib.h>
+
+1530250481 c:\users\dell\desktop\allegrobubbles\bola.h
+	"hexa.h"
+	"helpers.h"
+
+1530253078 c:\users\dell\desktop\allegrobubbles\helpers.h
+
+1530250886 c:\users\dell\desktop\allegrobubbles\canhao.h
+	"hexa.h"
+	"bola.h"
+	"hexagono.h"
+	"helpers.h"
+
+1530254219 c:\users\dell\desktop\allegrobubbles\hexagono.h
+	"hexa.h"
+	"helpers.h"
+	"bola.h"
+
+1530251714 c:\users\dell\desktop\allegrobubbles\controle.h
+	"hexa.h"
+	"helpers.h"
+	"bola.h"
+	"canhao.h"
+	"hexagono.h"
+
+1530254219 source:c:\users\dell\desktop\allegrobubbles\desenha.c
 	<stdio.h>
 	<stdlib.h>
 	"tela.h"
 	"hexa.h"
-
-1529706687 source:c:\users\dell\desktop\allegrobubbles\controle.c
-
-1530151829 source:c:\users\dell\desktop\allegrobubbles\bola.c
+	"controle.h"
+	"hexagono.h"
 	"bola.h"
-	"hexa.h"
+	"canhao.h"
 	"helpers.h"
 
-1530153487 c:\users\dell\desktop\allegrobubbles\bola.h
-	"hexa.h"
-	"helpers.h"
-
-1530153408 c:\users\dell\desktop\allegrobubbles\helpers.h
-
-1530155786 c:\users\dell\desktop\allegrobubbles\canhao.h
-	"hexa.h"
-	"bola.h"
+1530251563 source:c:\users\dell\desktop\allegrobubbles\hexagono.c
 	"hexagono.h"
 	"helpers.h"
+	"tela.h"
 
-1529699290 c:\users\dell\desktop\allegrobubbles\hexagono.h
-	"hexa.h"
-	"helpers.h"
-	"bola.h"
+1530251456 c:\users\dell\desktop\allegrobubbles\desenha.h
 
-1530144452 c:\users\dell\desktop\allegrobubbles\controle.h
-	"hexa.h"
+1530253084 source:c:\users\dell\desktop\allegrobubbles\helpers.c
 	"helpers.h"
-	"bola.h"
-	"hexagono.h"
 

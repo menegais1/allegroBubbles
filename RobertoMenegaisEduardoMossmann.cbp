@@ -48,11 +48,21 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="controle.h" />
+		<Unit filename="desenha.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="desenha.h" />
+		<Unit filename="helpers.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="helpers.h" />
 		<Unit filename="hexa.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="hexa.h" />
+		<Unit filename="hexagono.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="hexagono.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
