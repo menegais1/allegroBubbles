@@ -30,6 +30,7 @@ void inicializaCoresBolinhas(Hexagono *hexagono) {
 void inicializaHexagono(Hexagono *hexagono) {
     hexagono->raioHexagono = RAIO_BOLA;
     hexagono->angulo = 0;
+    hexagono->girando = 0;
     inicializaCoresBolinhas(hexagono);
     hexa_inicio(DIST_HEXA_CENTRO, hexagono->raioHexagono * 2, HEXA_CENTRO_X, HEXA_CENTRO_Y);
 
@@ -58,5 +59,9 @@ void inicializaHexagono(Hexagono *hexagono) {
             hexagono->bolaHexagonos[i].existe = 0;
         }
     }
+}
+
+void giraHexagono(float direcao, Hexagono *hexagono){
+
 }
 

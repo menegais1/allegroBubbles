@@ -44,13 +44,10 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
                     atualizaCanhao(canhao, hexagono);
                     break;
                 case INCORPORADA:
+                    canhao->disparado = 0;
+                    atualizaCanhao(canhao, hexagono);
                     break;
             }
-        }
-
-        if (canhao->bolaAtual.numColisoes >= NUM_MAX_COLISOES) {
-            canhao->bolaAtual.estado = DESTRUIDA;
-
         }
 
 
