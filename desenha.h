@@ -14,4 +14,6 @@ void desenhaJogo(Canhao *canhao, Hexagono *hexagono);
 
 void desenha(Canhao *canhao, Hexagono *hexagono, Controle *controle);
 
+void desenhaHexagono(Hexagono *hexagono);
+
 #endif // desenha_h

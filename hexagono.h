@@ -9,14 +9,13 @@
 
 typedef struct {
     CorBolinhas corBolinhas[6];
-    ponto ponto
+    float raioHexagono;
+    float angulo;
+    BolaHexagono *bolaHexagonos;
 } Hexagono;
-
-
 
 void inicializaCoresBolinhas(Hexagono *hexagono);
 
 void inicializaHexagono(Hexagono *hexagono);
-
 
 #endif // hexagono

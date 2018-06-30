@@ -17,11 +17,27 @@
 #define DESLOCAMENTO_RECORDES 17
 #define NUM_MAX_COLISOES 6
 
+#define HEXA_CENTRO_X LARGURA_TELA / 2
+#define HEXA_CENTRO_Y ALTURA_TELA / 1.75
+#define DIST_HEXA_CENTRO LARGURA_TELA / 1.50
+#define NUM_INICIAL_HEXA 5
+#define MAX_DIST_NUM_INICIAL_HEXA_X HEXA_CENTRO_X + (RAIO_BOLA *2 * NUM_INICIAL_HEXA )
+#define MAX_DIST_NUM_INICIAL_HEXA_Y HEXA_CENTRO_Y + (RAIO_BOLA * 2* NUM_INICIAL_HEXA )
+#define MIN_DIST_NUM_INICIAL_HEXA_X HEXA_CENTRO_X - (RAIO_BOLA *2 * NUM_INICIAL_HEXA )
+#define MIN_DIST_NUM_INICIAL_HEXA_Y HEXA_CENTRO_Y - (RAIO_BOLA * 2* NUM_INICIAL_HEXA )
 
 typedef struct {
     float x;
     float y;
 } Coordenadas;
+
+
+//declarado como ponto para facilitar o codigo
+typedef struct {
+    int numHexa;
+    int cor;
+    char existe;
+} BolaHexagono;
 
 typedef struct {
     float x;
@@ -51,6 +67,7 @@ typedef enum {
     CIMA, BAIXO, DIREITA, ESQUERDA, NENHUMA
 } DirecaoColisaoEnum;
 
+
 typedef enum {
     CANHAO,
     HELP,
@@ -59,10 +76,10 @@ typedef enum {
     NENHUM
 } CliqueMouseEnum;
 
- Parede paredeCima;
- Parede paredeBaixo;
- Parede paredeEsquerda;
- Parede paredeDireita;
+Parede paredeCima;
+Parede paredeBaixo;
+Parede paredeEsquerda;
+Parede paredeDireita;
 
 
 float absFloat(float number);

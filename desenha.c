@@ -13,8 +13,6 @@
 #include "helpers.h"
 
 
-
-
 void desenhaLayout(Controle *controle) {
     char pontosTexto[13];
 
@@ -103,7 +101,7 @@ void desenhaRecordes(Controle *controle) {
     char pontuacao[13];
 
     for (i = 0; i < TOTAL_RECORDES; i++) {
-        sprintf(pontuacao,"%d", controle->recordes[i].pontuacao);
+        sprintf(pontuacao, "%d", controle->recordes[i].pontuacao);
         tela_texto_esq(130, 170 + (i * DESLOCAMENTO_RECORDES), 15, branco, controle->recordes[i].nome);
         tela_texto_dir(200, 170 + (i * DESLOCAMENTO_RECORDES), 15, branco, pontuacao);
     }
@@ -116,7 +114,7 @@ void desenhaJogo(Canhao *canhao, Hexagono *hexagono) {
     Bola bolaAtual = canhao->bolaAtual;
     Bola bolaSeguinte = canhao->bolaSeguinte;
 
-
+    desenhaHexagono(hexagono);
     tela_circulo(bolaAtual.posicao.x, bolaAtual.posicao.y, bolaAtual.raio, 1, preto, bolaAtual.cor);
 
 
@@ -125,6 +123,19 @@ void desenhaJogo(Canhao *canhao, Hexagono *hexagono) {
 
 }
 
+void desenhaHexagono(Hexagono *hexagono) {
+    int i;
+    ponto posHexa;
+    for (i = 0; i <= num_hexa(); i++) {
+        if (hexagono->bolaHexagonos[i].existe == 1) {
+            posHexa = pos_hexa(i, hexagono->angulo);
+            tela_circulo(posHexa.x, posHexa.y, hexagono->raioHexagono, 1, preto, hexagono->bolaHexagonos[i].cor);
+        }
+    }
+
+    posHexa = pos_hexa(hexa_centro(), hexagono->angulo);
+    tela_circulo(posHexa.x, posHexa.y, hexagono->raioHexagono, 1, preto, branco);
+}
 
 void desenha(Canhao *canhao, Hexagono *hexagono, Controle *controle) {
 
