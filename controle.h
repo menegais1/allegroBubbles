@@ -1,13 +1,15 @@
 
 
+
+
+#ifndef controle_h
+#define controle_h
+
 #include "hexa.h"
 #include "helpers.h"
 #include "bola.h"
 #include "canhao.h"
 #include "hexagono.h"
-
-#ifndef controle_h
-#define controle_h
 
 typedef struct {
     int pontuacao;

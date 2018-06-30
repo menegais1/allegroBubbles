@@ -1,12 +1,16 @@
 
 
+
+#ifndef canhao_h
+#define canhao_h
+
+
+
 #include "hexa.h"
 #include "bola.h"
 #include "hexagono.h"
 #include "helpers.h"
 
-#ifndef canhao_h
-#define canhao_h
 
 typedef struct {
     Vetor direcao;

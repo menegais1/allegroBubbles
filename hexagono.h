@@ -1,11 +1,10 @@
 
 
-#include "hexa.h"
-#include "helpers.h"
-#include "bola.h"
 
 #ifndef hexagono_h
 #define hexagono_h
+
+#include "helpers.h"
 
 typedef struct {
     CorBolinhas corBolinhas[6];

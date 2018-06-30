@@ -637,16 +637,16 @@
 1530253084 source:c:\users\dell\desktop\allegrobubbles\helpers.c
 	"helpers.h"
 
-1530323267 source:c:\users\t-gamer\desktop\allegrobubbles\bola.c
+1530383269 source:c:\users\t-gamer\desktop\allegrobubbles\bola.c
 	"bola.h"
 	"helpers.h"
 	<stdlib.h>
 
-1530323267 c:\users\t-gamer\desktop\allegrobubbles\bola.h
-	"hexa.h"
+1530383126 c:\users\t-gamer\desktop\allegrobubbles\bola.h
 	"helpers.h"
+	"hexagono.h"
 
-1530336445 c:\users\t-gamer\desktop\allegrobubbles\helpers.h
+1530382806 c:\users\t-gamer\desktop\allegrobubbles\helpers.h
 
 1530323267 source:c:\users\t-gamer\desktop\allegrobubbles\canhao.c
 	"helpers.h"
@@ -655,18 +655,16 @@
 	"bola.h"
 	"tela.h"
 
-1530323267 c:\users\t-gamer\desktop\allegrobubbles\canhao.h
+1530383000 c:\users\t-gamer\desktop\allegrobubbles\canhao.h
 	"hexa.h"
 	"bola.h"
 	"hexagono.h"
 	"helpers.h"
 
-1530334846 c:\users\t-gamer\desktop\allegrobubbles\hexagono.h
-	"hexa.h"
+1530383166 c:\users\t-gamer\desktop\allegrobubbles\hexagono.h
 	"helpers.h"
-	"bola.h"
 
-1530323267 source:c:\users\t-gamer\desktop\allegrobubbles\controle.c
+1530383214 source:c:\users\t-gamer\desktop\allegrobubbles\controle.c
 	<stdio.h>
 	"tela.h"
 	"hexagono.h"
@@ -676,7 +674,7 @@
 	"bola.h"
 	"helpers.h"
 
-1530323267 c:\users\t-gamer\desktop\allegrobubbles\controle.h
+1530382993 c:\users\t-gamer\desktop\allegrobubbles\controle.h
 	"hexa.h"
 	"helpers.h"
 	"bola.h"
@@ -699,7 +697,7 @@
 1530323267 source:c:\users\t-gamer\desktop\allegrobubbles\helpers.c
 	"helpers.h"
 
-1530337193 source:c:\users\t-gamer\desktop\allegrobubbles\hexagono.c
+1530341276 source:c:\users\t-gamer\desktop\allegrobubbles\hexagono.c
 	<stdlib.h>
 	<stdio.h>
 	"hexagono.h"

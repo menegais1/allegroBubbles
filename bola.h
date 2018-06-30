@@ -1,10 +1,11 @@
 
 
-#include "hexa.h"
-#include "helpers.h"
 
 #ifndef bola_h
 #define bola_h
+
+#include "helpers.h"
+#include "hexagono.h"
 
 typedef struct {
     float velocidade;
@@ -20,6 +21,10 @@ Bola geraBola(Coordenadas posicao, int raio, float velocidade, CorBolinhas corBo
 
 void moveBola(Bola *bola);
 
-int colideBola(Coordenadas posicao, Bola *bola);
+int colideBola(Coordenadas posicao, Bola *bola, Hexagono *hexagono);
+
+Coordenadas atualizaPosicao(Bola *bola);
+
+int atualizaBola(Bola *bola, Hexagono *hexagono);
 
 #endif // bola

@@ -17,8 +17,11 @@
       <change beforePath="$PROJECT_DIR$/RobertoMenegaisEduardoMossmann.depend" beforeDir="false" afterPath="$PROJECT_DIR$/RobertoMenegaisEduardoMossmann.depend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allegro.log" beforeDir="false" afterPath="$PROJECT_DIR$/allegro.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/RobertoMenegaisEduardoMossmann.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/RobertoMenegaisEduardoMossmann.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desenha.c" beforeDir="false" afterPath="$PROJECT_DIR$/desenha.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desenha.h" beforeDir="false" afterPath="$PROJECT_DIR$/desenha.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bola.c" beforeDir="false" afterPath="$PROJECT_DIR$/bola.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bola.h" beforeDir="false" afterPath="$PROJECT_DIR$/bola.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canhao.h" beforeDir="false" afterPath="$PROJECT_DIR$/canhao.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controle.c" beforeDir="false" afterPath="$PROJECT_DIR$/controle.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controle.h" beforeDir="false" afterPath="$PROJECT_DIR$/controle.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/helpers.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hexagono.c" beforeDir="false" afterPath="$PROJECT_DIR$/hexagono.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hexagono.h" beforeDir="false" afterPath="$PROJECT_DIR$/hexagono.h" afterDir="false" />
@@ -26,9 +29,10 @@
       <change beforePath="$PROJECT_DIR$/obj/Debug/canhao.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/canhao.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/controle.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/controle.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/desenha.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/desenha.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/helpers.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/helpers.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/hexa.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/hexa.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/hexagono.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/hexagono.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/tela.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/tela.o" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,106 +42,98 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.6788991">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="desenha.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/desenha.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="209">
-                  <caret line="123" column="1" lean-forward="true" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="hexagono.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/hexagono.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bola.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/bola.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="9" column="21" selection-start-line="9" selection-end-line="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="hexagono.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hexagono.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="365">
-                  <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="desenha.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/desenha.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="helpers.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/helpers.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="387">
-                  <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="exemplo2.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../Allegro/Allegro/exemplo2.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="680">
-                  <caret line="58" selection-start-line="58" selection-end-line="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="exemplo2.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../Allegro/Allegro/exemplo2.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="107">
-                  <caret line="58" selection-start-line="58" selection-end-line="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="hexa.h" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/hexa.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-234">
-                  <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="hexagono.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hexagono.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-78">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bola.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bola.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpers.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bola.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bola.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="canhao.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/canhao.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hexagono.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hexagono.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="18" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controle.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controle.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="desenha.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/desenha.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hexa.h" pinned="true" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hexa.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exemplo2.c" pinned="true" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Allegro/Allegro/exemplo2.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -165,15 +161,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bola.h" />
         <option value="$PROJECT_DIR$/canhao.h" />
         <option value="$PROJECT_DIR$/canhao.c" />
         <option value="$PROJECT_DIR$/main.c" />
-        <option value="$PROJECT_DIR$/hexagono.h" />
-        <option value="$PROJECT_DIR$/helpers.h" />
         <option value="$PROJECT_DIR$/desenha.c" />
         <option value="$PROJECT_DIR$/desenha.h" />
         <option value="$PROJECT_DIR$/hexagono.c" />
+        <option value="$PROJECT_DIR$/bola.c" />
+        <option value="$PROJECT_DIR$/controle.c" />
+        <option value="$PROJECT_DIR$/helpers.h" />
+        <option value="$PROJECT_DIR$/bola.h" />
+        <option value="$PROJECT_DIR$/hexagono.h" />
       </list>
     </option>
   </component>
@@ -246,12 +244,12 @@
       <workItem from="1530152737052" duration="25660000" />
       <workItem from="1530224077420" duration="4604000" />
       <workItem from="1530246238893" duration="6935000" />
-      <workItem from="1530326008734" duration="6567000" />
+      <workItem from="1530326008734" duration="12887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44033000" />
+    <option name="totallyTimeSpent" value="50353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -259,6 +257,7 @@
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1471227" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -374,24 +373,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canhao.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/canhao.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" selection-start-line="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bola.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" selection-start-line="8" selection-end-line="16" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -426,59 +411,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Allegro/Allegro/exemplo2.c">
+    <entry file="file://$PROJECT_DIR$/desenha.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="334">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hexa.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-234">
+        <state relative-caret-position="28">
           <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers.h">
+    <entry file="file://$PROJECT_DIR$/../Allegro/Allegro/exemplo2.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bola.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="21" selection-start-line="9" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hexagono.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        <state relative-caret-position="107">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/desenha.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/desenha.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="123" column="1" lean-forward="true" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hexagono.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+        <state relative-caret-position="-78">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controle.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bola.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bola.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hexagono.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canhao.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

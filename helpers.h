@@ -64,7 +64,7 @@ typedef enum {
 } EstadoBolaEnum;
 
 typedef enum {
-    CIMA, BAIXO, DIREITA, ESQUERDA, NENHUMA
+    CIMA, BAIXO, DIREITA, ESQUERDA, NENHUMA, HEXAGONO
 } DirecaoColisaoEnum;
 
 

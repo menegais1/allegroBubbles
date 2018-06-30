@@ -25,8 +25,7 @@ Bola geraBola(Coordenadas posicao, int raio, float velocidade, CorBolinhas corBo
 }
 
 
-
-int colideBola(Coordenadas posicao, Bola *bola) {
+int colideBola(Coordenadas posicao, Bola *bola, Hexagono *hexagono) {
 
     int colisao = NENHUMA;
     if (posicao.x - BOLA_COLISAO_RAIO < paredeEsquerda.pontoInicial.x) {
@@ -43,36 +42,48 @@ int colideBola(Coordenadas posicao, Bola *bola) {
 
 void moveBola(Bola *bola) {
 
+    bola->posicao = atualizaPosicao(bola);
+
+}
+
+Coordenadas atualizaPosicao(Bola *bola) {
+
     Coordenadas posicao = bola->posicao;
+
     posicao.x = bola->posicao.x + bola->direcao.x * bola->velocidade;
     posicao.y = bola->posicao.y + bola->direcao.y * bola->velocidade;
-    switch (colideBola(posicao, bola)) {
+
+    return posicao;
+}
+
+int atualizaBola(Bola *bola, Hexagono *hexagono) {
+
+    Coordenadas posicao = atualizaPosicao(bola);
+    int estadoColisao = colideBola(posicao, bola, hexagono);
+    switch (estadoColisao) {
         case DIREITA:
-            bola->numColisoes++;
-            bola->direcao.x *= -1;
-            break;
         case ESQUERDA:
             bola->numColisoes++;
             bola->direcao.x *= -1;
+            moveBola(bola);
             break;
         case CIMA:
-            bola->numColisoes++;
-            bola->direcao.y *= -1;
-            break;
         case BAIXO:
             bola->numColisoes++;
             bola->direcao.y *= -1;
+            moveBola(bola);
+            break;
+        case HEXAGONO:
             break;
         case NENHUMA:
+            moveBola(bola);
             break;
         default:
             break;
     }
 
-    posicao.x = bola->posicao.x + bola->direcao.x * bola->velocidade;
-    posicao.y = bola->posicao.y + bola->direcao.y * bola->velocidade;
-
-    bola->posicao = posicao;
-
-
+    if (bola->numColisoes >= NUM_MAX_COLISOES) {
+        bola->estado = DESTRUIDA;
+    }
+    return bola->estado;
 }

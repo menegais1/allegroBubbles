@@ -10,7 +10,6 @@
 #include "helpers.h"
 
 
-
 //ARRUMAR OS DEFINES
 int cliqueDoMouse(int x, int y) {
     int lugarDoClique = NENHUM;
@@ -19,7 +18,7 @@ int cliqueDoMouse(int x, int y) {
         lugarDoClique = SAIR;
     } else if (y >= 45 && y <= 75 && x >= 550 && x <= 630) {
         lugarDoClique = HELP;
-    } else if (y >= 45 && y <= 75 && x>= 420 && x <= 540){
+    } else if (y >= 45 && y <= 75 && x >= 420 && x <= 540) {
         lugarDoClique = RECORDE;
     } else if (y > 100) {
         lugarDoClique = CANHAO;
@@ -36,15 +35,22 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
 
 
         if (canhao->disparado) {
-            if (canhao->bolaAtual.estado == DISPARADA) {
-                moveBola(&canhao->bolaAtual);
+            atualizaBola(&canhao->bolaAtual, hexagono);
+            switch (canhao->bolaAtual.estado) {
+                case DISPARADA:
+                    break;
+                case DESTRUIDA:
+                    canhao->disparado = 0;
+                    atualizaCanhao(canhao, hexagono);
+                    break;
+                case INCORPORADA:
+                    break;
             }
         }
 
         if (canhao->bolaAtual.numColisoes >= NUM_MAX_COLISOES) {
             canhao->bolaAtual.estado = DESTRUIDA;
-            canhao->disparado = 0;
-            atualizaCanhao(canhao, hexagono);
+
         }
 
 
@@ -58,7 +64,7 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
 
             if (controle->helpAberto == 1) {
                 controle->helpAberto = 0;
-            }else if (controle->recordesAberto ==1){
+            } else if (controle->recordesAberto == 1) {
                 controle->recordesAberto = 0;
             } else {
                 switch (clique) {
