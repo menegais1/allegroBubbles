@@ -28,7 +28,7 @@ typedef struct {
 
 int cliqueDoMouse(int x, int y);
 
-void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao);
+int atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao);
 
 
 #endif // controle
