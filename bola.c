@@ -88,10 +88,6 @@ int atualizaBola(Bola *bola, Hexagono *hexagono) {
             break;
         case HEXAGONO:
             bola->estado = INCORPORADA;
-            ponto posHexa = {bola->posicao.x, bola->posicao.y};
-            int numHexa = hexa_pos(posHexa, hexagono->angulo);
-            hexagono->bolaHexagonos[numHexa].existe = 1;
-            hexagono->bolaHexagonos[numHexa].cor = bola->cor;
             break;
         case NENHUMA:
             bola->estado = DISPARADA;

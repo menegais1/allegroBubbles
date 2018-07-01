@@ -47,6 +47,7 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
                 case INCORPORADA:
                     canhao->disparado = 0;
                     inicializaGiro(canhao->bolaAtual.posicao, canhao->bolaAtual.direcao, hexagono);
+                    controle->pontuacao += incorporaBolaHexagono(canhao->bolaAtual.posicao, canhao->bolaAtual.cor, hexagono);
                     atualizaCanhao(canhao, hexagono);
                     break;
             }

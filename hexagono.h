@@ -20,7 +20,11 @@ void inicializaCoresBolinhas(Hexagono *hexagono);
 
 void inicializaHexagono(Hexagono *hexagono);
 
-void inicializaGiro(Coordenadas coordenadas, Vetor direcao,Hexagono *hexagono);
+void inicializaGiro(Coordenadas coordenadas, Vetor direcao, Hexagono *hexagono);
+
+int incorporaBolaHexagono(Coordenadas posicao, int cor, Hexagono *hexagono);
+
+int buscaVizinho(int num, int array[], int tamanho);
 
 void giraHexagono(Hexagono *hexagono);
 
