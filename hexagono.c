@@ -42,6 +42,7 @@ void inicializaHexagono(Hexagono *hexagono) {
 
     hexagono->bolaHexagonos = temp;
     int i = 0;
+    float posTrianguloCima=1.8, posTrianguloBaixo=0.3;
     ponto posHexa;
 
     for (i = 0; i <= num_hexa(); i++) {
@@ -55,13 +56,104 @@ void inicializaHexagono(Hexagono *hexagono) {
             cor = rand() % 6;
             hexagono->corBolinhas[cor].numBolinhas++;
             hexagono->bolaHexagonos[i].cor = hexagono->corBolinhas[cor].cor;
-        } else {
+        } else if (posHexa.x <= MAX_DIST_NUM_INICIAL_HEXA_X - (RAIO_BOLA * posTrianguloCima * NUM_INICIAL_HEXA ) &&
+            posHexa.x >= MIN_DIST_NUM_INICIAL_HEXA_X + (RAIO_BOLA * posTrianguloCima * NUM_INICIAL_HEXA )&&
+            posHexa.y >= MIN_DIST_NUM_INICIAL_HEXA_Y - (RAIO_BOLA * 1 * NUM_INICIAL_HEXA) &&
+            posHexa.y <= MIN_DIST_NUM_INICIAL_HEXA_Y  ) {
+
+            hexagono->bolaHexagonos[i].existe = 1;
+            int cor;
+            cor = rand() % 6;
+            hexagono->corBolinhas[cor].numBolinhas++;
+            hexagono->bolaHexagonos[i].cor = hexagono->corBolinhas[cor].cor;
+            posTrianguloCima-=0.165;
+
+        }else if (posHexa.x <= MAX_DIST_NUM_INICIAL_HEXA_X - (RAIO_BOLA * posTrianguloBaixo * NUM_INICIAL_HEXA ) &&
+            posHexa.x >= MIN_DIST_NUM_INICIAL_HEXA_X + (RAIO_BOLA * posTrianguloBaixo * NUM_INICIAL_HEXA )&&
+            posHexa.y <= MAX_DIST_NUM_INICIAL_HEXA_Y + (RAIO_BOLA * 1 * NUM_INICIAL_HEXA) &&
+            posHexa.y >= MAX_DIST_NUM_INICIAL_HEXA_Y  ) {
+
+            hexagono->bolaHexagonos[i].existe = 1;
+            int cor;
+            cor = rand() % 6;
+            hexagono->corBolinhas[cor].numBolinhas++;
+            hexagono->bolaHexagonos[i].cor = hexagono->corBolinhas[cor].cor;
+            posTrianguloBaixo+=0.165;
+        }else {
             hexagono->bolaHexagonos[i].existe = 0;
         }
     }
+    hexagono->bolaHexagonos[234].existe=0;
 }
 
-void giraHexagono(float direcao, Hexagono *hexagono){
+void inicializaGiro(Coordenadas coordenadas, Vetor direcao, Hexagono *hexagono) {
+    hexagono->girando = 1;
+    hexagono->velocidade = absFloat(direcao.x) / 100;
+    hexagono->direcao = 1;
 
+    int quadrante = SUPERIOR_ESQUERDA;
+    if (coordenadas.y < HEXA_CENTRO_Y && coordenadas.x < HEXA_CENTRO_X) {
+        quadrante = SUPERIOR_ESQUERDA;
+    } else if (coordenadas.y < HEXA_CENTRO_Y && coordenadas.x > HEXA_CENTRO_X) {
+        quadrante = SUPERIOR_DIREITA;
+    } else if (coordenadas.y > HEXA_CENTRO_Y && coordenadas.x < HEXA_CENTRO_X) {
+        quadrante = INFERIOR_ESQUERDA;
+    } else if (coordenadas.y > HEXA_CENTRO_Y && coordenadas.x > HEXA_CENTRO_X) {
+        quadrante = INFERIOR_DIREITA;
+    }
+
+    switch (quadrante) {
+        case SUPERIOR_ESQUERDA:
+            if (direcao.x < 0 && direcao.y > 0) {
+                hexagono->direcao = -1;
+            } else if (direcao.x > 0 && direcao.y > 0) {
+                hexagono->direcao = 1;
+            } else if (direcao.x > 0 && direcao.y < 0) {
+                hexagono->direcao = 1;
+            }
+            break;
+        case SUPERIOR_DIREITA:
+            if (direcao.x > 0 && direcao.y > 0) {
+                hexagono->direcao = 1;
+            } else if (direcao.x < 0 && direcao.y > 0) {
+                hexagono->direcao = -1;
+            } else if (direcao.x < 0 && direcao.y < 0) {
+                hexagono->direcao = -1;
+            }
+            break;
+        case INFERIOR_ESQUERDA:
+            if (direcao.x > 0 && direcao.y > 0) {
+                hexagono->direcao = -1;
+            } else if (direcao.x < 0 && direcao.y < 0) {
+                hexagono->direcao = -1;
+            } else if (direcao.x > 0 && direcao.y < 0) {
+                hexagono->direcao = 1;
+            }
+            break;
+        case INFERIOR_DIREITA:
+            if (direcao.x > 0  && direcao.y < 0) {
+                hexagono->direcao = 1;
+            } else if (direcao.x < 0 && direcao.y < 0) {
+                hexagono->direcao = -1;
+            } else if (direcao.x < 0 && direcao.y > 0) {
+                hexagono->direcao = 1;
+            }
+            break;
+    }
+
+
+}
+
+
+void giraHexagono(Hexagono *hexagono) {
+
+    hexagono->angulo += hexagono->velocidade * hexagono->direcao;
+
+    hexagono->velocidade -= hexagono->velocidade / TEMPO_DE_GIRO_HEXAGONO;
+    if (hexagono->velocidade < 0) {
+        hexagono->velocidade = 0;
+        hexagono->girando = 0;
+        hexagono->direcao = 0;
+    }
 }
 

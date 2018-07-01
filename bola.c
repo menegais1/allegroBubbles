@@ -78,13 +78,13 @@ int atualizaBola(Bola *bola, Hexagono *hexagono) {
         case ESQUERDA:
             bola->numColisoes++;
             bola->direcao.x *= -1;
-            moveBola(bola);
+            bola->estado = DISPARADA;
             break;
         case CIMA:
         case BAIXO:
             bola->numColisoes++;
             bola->direcao.y *= -1;
-            moveBola(bola);
+            bola->estado = DISPARADA;
             break;
         case HEXAGONO:
             bola->estado = INCORPORADA;
@@ -94,7 +94,7 @@ int atualizaBola(Bola *bola, Hexagono *hexagono) {
             hexagono->bolaHexagonos[numHexa].cor = bola->cor;
             break;
         case NENHUMA:
-            moveBola(bola);
+            bola->estado = DISPARADA;
             break;
         default:
             break;

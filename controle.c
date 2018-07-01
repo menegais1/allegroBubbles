@@ -38,6 +38,7 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
             atualizaBola(&canhao->bolaAtual, hexagono);
             switch (canhao->bolaAtual.estado) {
                 case DISPARADA:
+                    moveBola(&canhao->bolaAtual);
                     break;
                 case DESTRUIDA:
                     canhao->disparado = 0;
@@ -45,11 +46,15 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
                     break;
                 case INCORPORADA:
                     canhao->disparado = 0;
+                    inicializaGiro(canhao->bolaAtual.posicao, canhao->bolaAtual.direcao, hexagono);
                     atualizaCanhao(canhao, hexagono);
                     break;
             }
         }
 
+        if (hexagono->girando == 1) {
+            giraHexagono(hexagono);
+        }
 
         if (tela_rato_clicado() == 1) {
             xClique = tela_rato_x_clique();
