@@ -563,7 +563,7 @@
 	"bola.h"
 	"tela.h"
 
-1530253050 source:c:\users\dell\desktop\allegrobubbles\main.c
+1530254894 source:c:\users\dell\desktop\allegrobubbles\main.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -577,7 +577,7 @@
 	"helpers.h"
 	"desenha.h"
 
-1530251698 source:c:\users\dell\desktop\allegrobubbles\controle.c
+1530425812 source:c:\users\dell\desktop\allegrobubbles\controle.c
 	<stdio.h>
 	"tela.h"
 	"hexagono.h"
@@ -587,36 +587,35 @@
 	"bola.h"
 	"helpers.h"
 
-1530251866 source:c:\users\dell\desktop\allegrobubbles\bola.c
+1530423903 source:c:\users\dell\desktop\allegrobubbles\bola.c
 	"bola.h"
+	"hexa.h"
 	"helpers.h"
 	<stdlib.h>
 
-1530250481 c:\users\dell\desktop\allegrobubbles\bola.h
-	"hexa.h"
+1530384617 c:\users\dell\desktop\allegrobubbles\bola.h
 	"helpers.h"
+	"hexagono.h"
 
-1530253078 c:\users\dell\desktop\allegrobubbles\helpers.h
+1530424834 c:\users\dell\desktop\allegrobubbles\helpers.h
 
-1530250886 c:\users\dell\desktop\allegrobubbles\canhao.h
+1530384617 c:\users\dell\desktop\allegrobubbles\canhao.h
 	"hexa.h"
 	"bola.h"
 	"hexagono.h"
 	"helpers.h"
 
-1530254219 c:\users\dell\desktop\allegrobubbles\hexagono.h
-	"hexa.h"
+1530423903 c:\users\dell\desktop\allegrobubbles\hexagono.h
 	"helpers.h"
-	"bola.h"
 
-1530251714 c:\users\dell\desktop\allegrobubbles\controle.h
+1530425779 c:\users\dell\desktop\allegrobubbles\controle.h
 	"hexa.h"
 	"helpers.h"
 	"bola.h"
 	"canhao.h"
 	"hexagono.h"
 
-1530254219 source:c:\users\dell\desktop\allegrobubbles\desenha.c
+1530384617 source:c:\users\dell\desktop\allegrobubbles\desenha.c
 	<stdio.h>
 	<stdlib.h>
 	"tela.h"
@@ -627,12 +626,15 @@
 	"canhao.h"
 	"helpers.h"
 
-1530251563 source:c:\users\dell\desktop\allegrobubbles\hexagono.c
+1530423903 source:c:\users\dell\desktop\allegrobubbles\hexagono.c
+	<stdlib.h>
+	<stdio.h>
 	"hexagono.h"
 	"helpers.h"
 	"tela.h"
+	"hexa.h"
 
-1530251456 c:\users\dell\desktop\allegrobubbles\desenha.h
+1530384617 c:\users\dell\desktop\allegrobubbles\desenha.h
 
 1530253084 source:c:\users\dell\desktop\allegrobubbles\helpers.c
 	"helpers.h"

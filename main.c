@@ -16,21 +16,32 @@
 
 
 int main() {
+    int exit=0;
+
     srand(time(NULL));
 
     Controle controle;
     Hexagono hexagono;
     Canhao canhao;
-
-    controle.pontuacao = 0;
+    controle.faseAtual=1;
 
     inicializaParedes();
+
+    do {
+
+    if(controle.faseAtual == 1){
+        controle.pontuacao = 0;
+    }
+
+
     inicializaHexagono(&hexagono);
     inicializaCanhao(&canhao, &hexagono);
 
     tela_inicio(LARGURA_TELA, ALTURA_TELA, "BubbleSpinner");
 
-    atualiza(&controle, &hexagono, &canhao);
+    exit = atualiza(&controle, &hexagono, &canhao);
+
+    }while(exit == 0);
 
 }
 

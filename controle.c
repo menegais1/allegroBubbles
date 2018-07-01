@@ -28,7 +28,7 @@ int cliqueDoMouse(int x, int y) {
 }
 
 
-void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
+int atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
     int xClique, yClique, clique;
 
     while (1) {
@@ -76,7 +76,7 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
             } else {
                 switch (clique) {
                     case SAIR:
-                        return;
+                        return 1;
                         break;
                     case HELP:
                         controle->helpAberto = 1;
