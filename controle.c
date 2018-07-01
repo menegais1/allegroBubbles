@@ -43,11 +43,13 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
                 case DESTRUIDA:
                     canhao->disparado = 0;
                     atualizaCanhao(canhao, hexagono);
+                    controle->pontuacao -= 3;
                     break;
                 case INCORPORADA:
                     canhao->disparado = 0;
                     inicializaGiro(canhao->bolaAtual.posicao, canhao->bolaAtual.direcao, hexagono);
-                    controle->pontuacao += incorporaBolaHexagono(canhao->bolaAtual.posicao, canhao->bolaAtual.cor, hexagono);
+                    controle->pontuacao += incorporaBolaHexagono(canhao->bolaAtual.posicao, canhao->bolaAtual.cor,
+                                                                 hexagono);
                     atualizaCanhao(canhao, hexagono);
                     break;
             }
@@ -56,6 +58,8 @@ void atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao) {
         if (hexagono->girando == 1) {
             giraHexagono(hexagono);
         }
+
+        printf("COLISAO: %d", checaColisaoParedeHexagono(hexagono));
 
         if (tela_rato_clicado() == 1) {
             xClique = tela_rato_x_clique();

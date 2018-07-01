@@ -234,3 +234,47 @@ void giraHexagono(Hexagono *hexagono) {
     }
 }
 
+int checaColisaoParedeHexagono(Hexagono *hexagono) {
+    int x, y, numHexa;
+    ponto posicaoHexa;
+    for (x = paredeCima.pontoInicial.x, y = paredeCima.pontoInicial.y;
+         x <= paredeCima.pontoFinal.x; x += RAIO_BOLA) {
+        posicaoHexa.x = x;
+        posicaoHexa.y = y;
+        numHexa = hexa_pos(posicaoHexa, hexagono->angulo);
+        if (hexagono->bolaHexagonos[numHexa].existe == 1) {
+            return 1;
+        }
+    }
+    for (x = paredeBaixo.pontoInicial.x, y = paredeBaixo.pontoInicial.y;
+         x <= paredeBaixo.pontoFinal.x; x += RAIO_BOLA) {
+        posicaoHexa.x = x;
+        posicaoHexa.y = y;
+        numHexa = hexa_pos(posicaoHexa, hexagono->angulo);
+        if (hexagono->bolaHexagonos[numHexa].existe == 1) {
+            return 1;
+        }
+    }
+    for (x = paredeEsquerda.pontoInicial.x, y = paredeEsquerda.pontoInicial.y;
+         y <= paredeEsquerda.pontoFinal.y; y += RAIO_BOLA) {
+        posicaoHexa.x = x;
+        posicaoHexa.y = y;
+        numHexa = hexa_pos(posicaoHexa, hexagono->angulo);
+        if (hexagono->bolaHexagonos[numHexa].existe == 1) {
+            return 1;
+        }
+    }
+    for (x = paredeDireita.pontoInicial.x, y = paredeDireita.pontoInicial.y;
+         y <= paredeDireita.pontoFinal.y; y += RAIO_BOLA) {
+        posicaoHexa.x = x;
+        posicaoHexa.y = y;
+        numHexa = hexa_pos(posicaoHexa, hexagono->angulo);
+        if (hexagono->bolaHexagonos[numHexa].existe == 1) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+

@@ -28,4 +28,6 @@ int buscaVizinho(int num, int array[], int tamanho);
 
 void giraHexagono(Hexagono *hexagono);
 
+int checaColisaoParedeHexagono(Hexagono *hexagono);
+
 #endif // hexagono
