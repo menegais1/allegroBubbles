@@ -32,3 +32,4 @@ void inicializaParedes(){
     paredeEsquerda.pontoFinal.y = 640;
 
 }
+

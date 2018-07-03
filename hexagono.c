@@ -26,6 +26,20 @@ void inicializaCoresBolinhas(Hexagono *hexagono) {
     return;
 }
 
+int somaDasBolas(Hexagono *hexagono) {
+    int soma = 0;
+
+    soma += hexagono->corBolinhas[0].numBolinhas;
+    soma += hexagono->corBolinhas[1].numBolinhas;
+    soma += hexagono->corBolinhas[2].numBolinhas;
+    soma += hexagono->corBolinhas[3].numBolinhas;
+    soma += hexagono->corBolinhas[4].numBolinhas;
+    soma += hexagono->corBolinhas[5].numBolinhas;
+
+    return soma;
+
+}
+
 
 void inicializaHexagono(Hexagono *hexagono) {
     hexagono->raioHexagono = RAIO_BOLA;
@@ -34,14 +48,16 @@ void inicializaHexagono(Hexagono *hexagono) {
     inicializaCoresBolinhas(hexagono);
     hexa_inicio(DIST_HEXA_CENTRO, hexagono->raioHexagono * 2, HEXA_CENTRO_X, HEXA_CENTRO_Y);
 
-    BolaHexagono *temp = malloc(sizeof(BolaHexagono) * (num_hexa() + 1));
-    if (temp == NULL) {
-        printf("ERRO AO ALOCAR HEXAGONOS");
-        return;
-    }
+    if (hexagono->bolaHexagonos == NULL) {
+        BolaHexagono *temp = malloc(sizeof(BolaHexagono) * (num_hexa() + 1));
+        if (temp == NULL) {
+            printf("ERRO AO ALOCAR HEXAGONOS");
+            return;
+        }
 
-    hexagono->bolaHexagonos = temp;
-    int i = 0;
+        hexagono->bolaHexagonos = temp;
+    }
+    int i = 0, hexaCentro;
     float posTrianguloCima = 1.8, posTrianguloBaixo = 0.3;
     ponto posHexa;
 
@@ -49,7 +65,13 @@ void inicializaHexagono(Hexagono *hexagono) {
 
         hexagono->bolaHexagonos[i].numHexa = i;
         posHexa = pos_hexa(i, hexagono->angulo);
-        if (posHexa.x <= MAX_DIST_NUM_INICIAL_HEXA_X && posHexa.x >= MIN_DIST_NUM_INICIAL_HEXA_X &&
+
+        if(i == hexa_centro()){
+            int hexaCentro;
+            hexaCentro =hexa_centro();
+            hexagono->bolaHexagonos[hexaCentro].existe = 1;
+            hexagono->bolaHexagonos[hexaCentro].cor = branco;
+        }else if (posHexa.x <= MAX_DIST_NUM_INICIAL_HEXA_X && posHexa.x >= MIN_DIST_NUM_INICIAL_HEXA_X &&
             posHexa.y <= MAX_DIST_NUM_INICIAL_HEXA_Y && posHexa.y >= MIN_DIST_NUM_INICIAL_HEXA_Y) {
             hexagono->bolaHexagonos[i].existe = 1;
             int cor;
@@ -83,13 +105,22 @@ void inicializaHexagono(Hexagono *hexagono) {
             hexagono->bolaHexagonos[i].existe = 0;
         }
     }
+
     hexagono->bolaHexagonos[234].existe = 0;
+
+
+    for (i = 0; i < 6; i++) {
+        if (hexagono->corBolinhas[i].cor == hexagono->bolaHexagonos[234].cor) {
+            hexagono->corBolinhas[i].numBolinhas--;
+            break;
+        }
+    }
 }
 
 void inicializaGiro(Coordenadas coordenadas, Vetor direcao, Hexagono *hexagono) {
     hexagono->girando = 1;
-    //ARRUMAR A VELOCIDADE
-    hexagono->velocidade = absFloat(direcao.x) / 100;
+
+    hexagono->velocidade = absFloat(direcao.x) / TEMPO_DE_GIRO_HEXAGONO;
     hexagono->direcao = 1;
 
     int quadrante = SUPERIOR_ESQUERDA;
@@ -187,27 +218,12 @@ int incorporaBolaHexagono(Coordenadas posicao, int cor, Hexagono *hexagono) {
             pontuacao++;
         }
 
-        int existeVizinhos = 0;
-
-        for (i = 0; i <= num_hexa(); i++) {
-            if (hexagono->bolaHexagonos[i].existe == 1) {
-                existeVizinhos = 0;
-                for (j = 0; j < 6; j++) {
-                    vizinhoHexa = vizinho(i, j);
-                    if (vizinhoHexa != -1) {
-                        if (hexagono->bolaHexagonos[vizinhoHexa].existe == 1) {
-                            existeVizinhos = 1;
-                        }
-                    }
-                }
-                if (existeVizinhos != 1) {
-                    hexagono->bolaHexagonos[i].existe = 0;
-                    hexagono->bolaHexagonos[i].cor = transparente;
-                    pontuacao++;
-                }
+        for (i = 0; i < 6; i++) {
+            if (hexagono->corBolinhas[i].cor == cor) {
+                hexagono->corBolinhas[i].numBolinhas -= pontuacao + 1;
+                break;
             }
         }
-
     }
     return pontuacao;
 }

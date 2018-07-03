@@ -20,17 +20,22 @@
 #define HEXA_CENTRO_X LARGURA_TELA / 2
 #define HEXA_CENTRO_Y ALTURA_TELA / 1.75
 #define DIST_HEXA_CENTRO LARGURA_TELA / 1.50
+
 #define NUM_INICIAL_HEXA 5
+
 #define MAX_DIST_NUM_INICIAL_HEXA_X HEXA_CENTRO_X + (RAIO_BOLA * 2 * NUM_INICIAL_HEXA )
 #define MAX_DIST_NUM_INICIAL_HEXA_Y HEXA_CENTRO_Y + (RAIO_BOLA * 1.2 * NUM_INICIAL_HEXA )
 #define MIN_DIST_NUM_INICIAL_HEXA_X HEXA_CENTRO_X - (RAIO_BOLA * 2 * NUM_INICIAL_HEXA )
 #define MIN_DIST_NUM_INICIAL_HEXA_Y HEXA_CENTRO_Y - (RAIO_BOLA * 1.4 * NUM_INICIAL_HEXA )
-#define TEMPO_DE_GIRO_HEXAGONO 100
+#define TEMPO_DE_GIRO_HEXAGONO 40
+
+#define BOLAS_ADICIONADAS 3
+#define RODADAS_TOTAIS_PARA_ADICIONAR 10
+
 typedef struct {
     float x;
     float y;
 } Coordenadas;
-
 
 //declarado como ponto para facilitar o codigo
 typedef struct {
@@ -77,6 +82,7 @@ typedef enum {
     HELP,
     SAIR,
     RECORDE,
+    JOGAR_NOVAMENTE,
     NENHUM
 } CliqueMouseEnum;
 

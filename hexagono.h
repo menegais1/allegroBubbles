@@ -14,6 +14,7 @@ typedef struct {
     int direcao;
     char girando;
     BolaHexagono *bolaHexagonos;
+
 } Hexagono;
 
 void inicializaCoresBolinhas(Hexagono *hexagono);

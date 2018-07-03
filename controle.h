@@ -19,16 +19,27 @@ typedef struct {
 typedef struct {
     int faseAtual;
     int pontuacao;
-    Recorde recordes[10];
+    Recorde recordes[TOTAL_RECORDES];
     char helpAberto;
     char recordesAberto;
+    char telaGameOver;
+    char recordeGravado;
+    int rodadasRestantesParaAdicionar;
 } Controle;
 
 
+void adicionaBolas(Hexagono *hexagono, Controle *controle);
 
-int cliqueDoMouse(int x, int y);
+int cliqueDoMouse(int x, int y, Controle *controle);
 
 int atualiza(Controle *controle, Hexagono *hexagono, Canhao *canhao);
 
+void atribuiRecordes(Controle *controle);
+
+int lerArquivo(Controle *controle);
+
+int escreveArquivo(Controle *controle);
+
+void inicializaRecordes(Controle *controle);
 
 #endif // controle
